@@ -1,0 +1,48 @@
+filetype off              
+
+" --- Vundle Stuff ---
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" Plugins
+" Custom operators
+Plugin 'tpope/vim-commentary' "gc to comment, gcc whole line
+Plugin 'tpope/vim-repeat' "permits more repeating
+Plugin 'tpope/vim-unimpaired' "maps [], ex [<space> adds a line before current line, [e, ]e to move lines up and down
+Plugin 'tpope/vim-surround' "cs to change, ds to delete etc, cs't changes from ' to html tags  
+Plugin 'vim-scripts/ReplaceWithRegister' "gr command for replacing with register
+Plugin 'vim-scripts/loremipsum' "Lorem ipsum generator
+
+" Javascript and React
+Plugin 'pangloss/vim-javascript' " Syntax highlighting for js
+Plugin 'mxw/vim-jsx' " Syntax highlighting for jsx
+Plugin 'mattn/emmet-vim' " Emmet for vim
+
+Plugin 'w0rp/ale' " Asynchronous linting/fixing for Vim and Language Server Protocol integration
+Plugin 'skywind3000/asyncrun.vim' " For running async operators
+
+Plugin 'JamshedVesuna/vim-markdown-preview'
+Plugin 'mileszs/ack.vim' 
+
+" Git
+Plugin 'tpope/vim-fugitive' " Vim wrapper
+Plugin 'itchyny/vim-gitbranch' " For getting current branch
+
+" Tmux
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'melonmanchan/vim-tmux-resizer' " Semless pane resizing for vim and Tmux
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required for plugins to load correctly
+
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"

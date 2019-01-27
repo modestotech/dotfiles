@@ -1,0 +1,8 @@
+" Html
+nnoremap åhtml :-1read /Users/max/.vim/skeletons/html<CR>6jw7li
+
+" Text fill
+nnoremap åfox OThe quick brown fox jumps over the lazy dog.<CR>The lazy dog was jumped over by the quick brown fox.<Esc>kk
+
+nnoremap ålorem OLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<Esc>k
+

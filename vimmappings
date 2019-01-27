@@ -1,0 +1,64 @@
+let mapleader = ","
+
+" Leader commands
+" Toggle scrollbind
+nnoremap <leader>b :set scrollbind!<CR> :set scrollbind?<CR>
+
+" Toggle spell check
+nnoremap <leader>s :setlocal spell!<CR> :setlocal spell?<CR>
+
+" Clear search
+map <leader><space> :let @/=''<cr> 
+
+" Formatting
+map <leader>q gqip
+
+" Toggle tabs and EOL
+map <leader>l :set list!<CR> 
+
+" Closing brackets automagically
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ` ``<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<CR> {<CR>}<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O
+
+" Mapping the vim-unimpaired commands
+nmap ö [
+nmap ä ]
+omap ö [
+omap ä ]
+xmap ö [
+xmap ä ] 
+
+" Mapping for following tags in help files 
+au filetype help :nnoremap <buffer><CR> <c-]>
+au filetype help :nnoremap <buffer><BS> <c-T>
+
+" Pane resizing
+noremap <C-w>+ :resize +5<CR>
+noremap <C-w>- :resize -5<CR>
+noremap <C-w>< :vertical:resize -5<CR>
+noremap <C-w>> :vertical:resize +5<CR>
+
+" Opens file under cursor in new vertical split
+nnoremap gf :vertical wincmd f<CR>
+
+" Delete forward
+inoremap <C-d> <Del>
+
+" Toggle explorer
+map <F2> :Lex<CR>
+
+" Don't use arrows!
+nnoremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+inoremap <Up>  <Nop>
+inoremap <Down> <Nop>
+inoremap <Left> <Nop>
+inoremap <Right> <Nop>
