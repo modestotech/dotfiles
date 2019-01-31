@@ -1,2 +1,0 @@
-map <leader>t :!tree $(pwd) -I node_modules \| less <CR>
-

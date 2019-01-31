@@ -15,6 +15,7 @@ alias cl='clear'
 alias cheatvim='mdless ~/cheatsheets/vim.md'
 alias cheatbash='mdless ~/cheatsheets/bash.md'
 alias cheattmux='mdless ~/cheatsheets/tmux.md'
+alias cheatless='mdless ~/cheatsheets/less.md'
 
 hf() {
   history | grep -i $1
@@ -26,6 +27,11 @@ dirSize() {
 
 fetchGithubFile() {
 	curl -H "Accept: application/vnd.github.VERSION.raw" https://api.github.com/repos/$1/$2/contents/$3
+}
+
+fetchGithubGistFile() {
+  curl -H "Accept: application/vnd.github.VERSION.raw" https://gist.githubusercontent.com/$1/$2/raw/$3 
+
 }
 
 mdless() {

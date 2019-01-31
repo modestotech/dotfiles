@@ -6,6 +6,9 @@ if [[ $? != 0 ]] ; then
     # Install Homebrew
 		/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 else
+	  # Remove all installed formulas
+	  brew remove --force $(brew list) --ignore-dependencies
+		# Upgrade brew
     brew upgrade
 fi
 

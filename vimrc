@@ -56,7 +56,7 @@ set encoding=utf-8
 set wrap " Activate soft wrap
 set linebreak " To don't break in words
 set nolist " Needed for linebreak with list activated
-set showbreak=>\ 
+set showbreak=↳\ \ \ 
 set textwidth=0
 set formatoptions=tcqrn1
 set tabstop=2
@@ -154,4 +154,4 @@ let g:solarized_termcolors=256
 let g:solarized_termtrans=1
 colorscheme solarized
 
-au BufRead,BufNewFile *.vim* set filetype=vim
+au BufRead,BufNewFile *vim* set filetype=vim

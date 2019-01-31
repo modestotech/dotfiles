@@ -60,6 +60,9 @@
 		# Just diff
 		d = diff
 
+		# Diff stat
+		ds = diff --stat
+
     # View the log and diff for a commit (previous if no SHA1 provided)
     det = log -n1 -p --format=fuller
 
