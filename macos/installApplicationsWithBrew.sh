@@ -4,15 +4,21 @@
 which -s brew
 if [[ $? != 0 ]] ; then
     # Install Homebrew
+		echo "Brew is not installed, installing..."
 		/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 else
+		echo "Brew is already installed, removing current formulas..."
 	  # Remove all installed formulas
-	  brew remove --force $(brew list) --ignore-dependencies
+	  brew uninstall --force $(brew list) --ignore-dependencies
+	  brew cask uninstall --force $(brew cask list)
+		brew cleanup -s
+		brew cask cleanup
 		# Upgrade brew
+    brew update
     brew upgrade
 fi
 
-# Updated GNU packages
+# Outdated GNU packages
 brew install coreutils # Conatins the most essential UNIX stuff
 brew install binutils
 brew install diffutils
@@ -31,10 +37,16 @@ brew install watch
 brew install wdiff --with-gettext
 brew install wget
 
+echo "Outdated GNU brew packages are installed."
+sleep 1
+
 # Outdated GNU command line tools
 brew install bash
 brew install bash-completion
 brew install less
+
+echo "Outdated GNU command line tools brew packages are installed."
+sleep 1
 
 # Outdated packages (not GNU)
 brew install file-formula
@@ -45,10 +57,13 @@ brew install python
 brew install rsync
 brew install svn
 brew install unzip
-brew install vim --override-system-vi
+brew install vim --with-override-system-vi
 brew install zsh
 
-# Install packages
+echo "Outdated non-GNU brew packages are installed."
+sleep 1
+
+# Install utility packages
 brew install awscli
 brew install cloc
 brew install dockutil
@@ -62,16 +77,13 @@ brew install markdown
 brew install mongodb
 brew install node
 brew install tmux
-brew install tree # Prints dir tree 
+brew install tree # Prints dir tree
 brew install reattach-to-user-namespace # Needed for copy pasting from Tmux
 brew install watchman
 brew install z
 
-# Wait a bit before moving on...
+echo "Success! Brew utlity formulas are installed."
 sleep 1
-
-# ...and then.
-echo "Success! Basic brew packages are installed."
 
 # Apps
 brew cask install dropbox
@@ -84,19 +96,21 @@ brew cask install virtualbox
 brew cask install vlc
 brew cask install slack
 
+echo "Success! MacOS applications are installed with brew cask."
+sleep 1
+
 # Utilities
 brew cask install cheatsheet
 brew cask install fanny
 brew cask install loading
-brew cask install minikube # Needed for copying from tmux to pbcopy
-brew cask install reattach-to-user-namespace # Needed for copying from tmux to pbcopy
+brew cask install minikube
 brew cask install shiftit
 
 # Quick Look Plugins (https://github.com/sindresorhus/quick-look-plugins)
-brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv betterzipql qlimagesize webpquicklook qlvideo
+brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json webpquicklook suspicious-package quicklookase qlvideo
 
-# Wait a bit before moving on...
+echo "Success! MacOS utilities are installed with brew cask."
 sleep 1
 
 # ...and then.
-echo "Success! Brew additional applications are installed."
+echo "Success! Brew applications are installed."
