@@ -7,34 +7,41 @@ if [[ $? != 0 ]] ; then
 		echo "Brew is not installed, installing..."
 		/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 else
-		echo "Brew is already installed, removing current formulas..."
+		echo "Brew is already installed"
 	  # Remove all installed formulas
-	  brew uninstall --force $(brew list) --ignore-dependencies
-	  brew cask uninstall --force $(brew cask list)
-		brew cleanup -s
-		brew cask cleanup
-		# Upgrade brew
+		if [[ $(brew list) ]]; then
+				echo "Removing brew formulas"
+				brew cleanup -s
+				brew uninstall --force $(brew list) --ignore-dependencies
+		fi
+		if [[ $(brew cask list) ]]; then
+				echo "Removing brew cask formulas"
+				brew cask uninstall --force $(brew cask list)
+		fi
+		echo "Updating brew"
     brew update
     brew upgrade
+		echo "Updating brew cask"
+		brew cask upgrade
 fi
 
 # Outdated GNU packages
 brew install coreutils # Conatins the most essential UNIX stuff
 brew install binutils
 brew install diffutils
-brew install ed --with-default-names
-brew install findutils --with-default-names
+brew install ed 
+brew install findutils 
 brew install gawk
-brew install gnu-indent --with-default-names
-brew install gnu-sed --with-default-names
-brew install gnu-tar --with-default-names
-brew install gnu-which --with-default-names
+brew install gnu-indent 
+brew install gnu-sed 
+brew install gnu-tar 
+brew install gnu-which 
 brew install gnutls
-brew install grep --with-default-names
+brew install grep 
 brew install gzip
 brew install screen
 brew install watch
-brew install wdiff --with-gettext
+brew install wdiff
 brew install wget
 
 echo "Outdated GNU brew packages are installed."
@@ -57,7 +64,7 @@ brew install python
 brew install rsync
 brew install svn
 brew install unzip
-brew install vim --with-override-system-vi
+brew install vim
 brew install zsh
 
 echo "Outdated non-GNU brew packages are installed."
@@ -67,7 +74,6 @@ sleep 1
 brew install awscli
 brew install cloc
 brew install dockutil
-brew install git-credential-eanager
 brew install htop
 brew install httpie
 brew install kubernetes-cli
@@ -89,12 +95,14 @@ sleep 1
 brew cask install dropbox
 brew cask install google-chrome
 brew cask install google-backup-and-sync
+brew cask install java
 brew cask install postman
 brew cask install visual-studio
 brew cask install visual-studio-code
 brew cask install virtualbox
 brew cask install vlc
 brew cask install slack
+brew install git-credential-manager # Has to be installed after java
 
 echo "Success! MacOS applications are installed with brew cask."
 sleep 1

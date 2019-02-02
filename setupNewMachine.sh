@@ -6,13 +6,13 @@ function doIt() {
 	bash ~/dotfiles/macos/updateOSX.sh
 	bash ~/dotfiles/installScripts/pre-setup.sh
 	bash ~/dotfiles/installScripts/makeSymlinks.sh 
-	bash ~/dotfiles/installScripts/setupGit.sh
 	bash ~/dotfiles/macos/installApplicationsWithBrew.sh
 	bash ~/dotfiles/macos/setupMacOsDefaults.sh
 	bash ~/dotfiles/macos/setupDock.sh
+	bash ~/dotfiles/installScripts/setupTerminal.sh
+	bash ~/dotfiles/installScripts/setupGit.sh
+	tmux source-file ~/.tmux.conf 
 	source ~/.bash_profile;
-	vim +PluginInstall +qall
-  tmux source-file ~/.tmux.conf 
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then

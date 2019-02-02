@@ -1,11 +1,6 @@
 echo -n "Uptime: "; uptime
 echo ""
 
-# Use bash completion if it's available
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
-fi
-
 source ~/.bash_aliases
 
 # For printing the current git branch
@@ -14,6 +9,7 @@ parse_git_branch() {
  }
 
 export PS1="\W\$(parse_git_branch) $ "
+export EDITOR="/usr/local/bin/vim"
 
 # Some formatting of history
 export HISTSIZE=300

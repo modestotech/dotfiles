@@ -10,6 +10,7 @@ brew missing # Checks all installed formulas for missing dependencies
 
 # IDE stuff
 vim +PluginUpdate +qall
+cd ~/dracula-theme/ && git pull && cd -
 
 # MacOS
 mas outdated # Print outdated apps from App Store
