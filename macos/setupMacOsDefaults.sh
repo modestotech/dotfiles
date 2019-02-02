@@ -305,9 +305,6 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 # Dock, Dashboard, and hot corners                                            #
 ###############################################################################
 
-# So that displays have separate mission control spaces 
-defaults write com.apple.dock workspaces-auto-swoosh -boolean NO
-
 # Enable highlight hover effect for the grid view of a stack (Dock)
 defaults write com.apple.dock mouse-over-hilite-stack -bool true
 
