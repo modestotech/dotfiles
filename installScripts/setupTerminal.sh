@@ -8,4 +8,4 @@ git clone https://github.com/dracula/terminal-app.git ~/dracula-theme
 
 vim +PluginInstall +qall
 
-echo "Choose the dracula theme in Terminal settings, located in (~/.dracula-theme)"
+echo "Choose the dracula theme in Terminal settings, located in (~/dracula-theme)"
