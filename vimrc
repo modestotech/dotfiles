@@ -77,11 +77,11 @@ let &t_SR.="\e[4 q" " Steady underline in replace mode
 runtime! macros/matchit.vim
 
 " Setup netrw file explorer
-let g:netrw_liststyle = 3
 let g:netrw_banner = 0
+let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
-let g:netrw_winsize = 25
 let g:netrw_altv = 1
+let g:netrw_winsize = 25
 
 " Allow hidden buffers
 set hidden

@@ -27,10 +27,10 @@ au filetype help :nnoremap <buffer><CR> <c-]>
 au filetype help :nnoremap <buffer><BS> <c-T>
 
 " Pane resizing
-noremap <C-w>+ :resize +5<CR>
-noremap <C-w>- :resize -5<CR>
-noremap <C-w>< :vertical:resize -5<CR>
-noremap <C-w>> :vertical:resize +5<CR>
+noremap <C-w><Up> :resize +5<CR>
+noremap <C-w><Down> :resize -5<CR>
+noremap <C-w><Left> :vertical:resize -5<CR>
+noremap <C-w><Right> :vertical:resize +5<CR>
 
 " Opens file under cursor in new vertical split
 nnoremap gf :vertical wincmd f<CR>
@@ -39,7 +39,7 @@ nnoremap gf :vertical wincmd f<CR>
 inoremap <C-d> <Del>
 
 " Toggle explorer
-map <F2> :Lex<CR>
+map <F2> :call ToggleNetrw()<CR>
 
 " Mapping the vim-unimpaired commands
 nmap ö [
