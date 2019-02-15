@@ -7,9 +7,10 @@ alias temp='cd ~/Desktop/tmp/'
 alias up='cd ..'
 alias ll='ls -lahG'
 alias h='history'
-alias g='git'
 alias c='clear'
 alias cl='clear'
+
+alias grep='grep --color=auto'
 
 # Cheat sheets
 alias cheatvim='mdless ~/cheatsheets/vim.md'

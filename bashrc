@@ -15,7 +15,3 @@ export EDITOR="/usr/local/bin/vim"
 export HISTSIZE=300
 export HISTTIMEFORMAT='%b %d %R -> '
 export HISTIGNORE="?:??:history:pwd:exit:df:ls:ls -la:ll"
-
-# Some formatting of grep
-export GREP_COLOR="34;47"
-export GREP_OPTIONS="--color=auto"
