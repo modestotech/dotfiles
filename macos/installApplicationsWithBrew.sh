@@ -8,16 +8,20 @@ if [[ $? != 0 ]] ; then
 		/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 else
 		echo "Brew is already installed"
-	  # Remove all installed formulas
-		if [[ $(brew list) ]]; then
-				echo "Removing brew formulas"
-				brew cleanup -s
-				brew uninstall --force $(brew list) --ignore-dependencies
-		fi
-		if [[ $(brew cask list) ]]; then
-				echo "Removing brew cask formulas"
-				brew cask uninstall --force $(brew cask list)
-		fi
+		read -p "Do you want to uninstall existing brew packages? (y/n) " -n 1;
+		echo "";
+		if [[ $REPLY =~ ^[Yy]$ ]]; then
+			# Remove all installed formulas
+			if [[ $(brew list) ]]; then
+					echo "Removing brew formulas"
+					brew cleanup -s
+					brew uninstall --force $(brew list) --ignore-dependencies
+			fi
+			if [[ $(brew cask list) ]]; then
+					echo "Removing brew cask formulas"
+					brew cask uninstall --force $(brew cask list)
+			fi
+		fi;
 		echo "Updating brew"
     brew update
     brew upgrade
@@ -62,7 +66,6 @@ brew install openssh
 brew install perl
 brew install python
 brew install rsync
-brew install svn
 brew install unzip
 brew install vim
 brew install zsh
@@ -95,14 +98,15 @@ sleep 1
 brew cask install dropbox
 brew cask install google-chrome
 brew cask install google-backup-and-sync
-brew cask install java
 brew cask install postman
-brew cask install visual-studio
 brew cask install visual-studio-code
 brew cask install virtualbox
-brew cask install vlc
-brew cask install slack
+
+# Frameworks etc
+brew cask install java
+brew cask install osxfuse # File system stuff
 brew install git-credential-manager # Has to be installed after java
+brew install sshfs # For access to remote older with ssh
 
 echo "Success! MacOS applications are installed with brew cask."
 sleep 1
