@@ -85,6 +85,7 @@ brew install mas
 brew install markdown
 brew install mongodb
 brew install node
+brew install pandoc
 brew install tmux
 brew install tree # Prints dir tree
 brew install reattach-to-user-namespace # Needed for copy pasting from Tmux
