@@ -22,9 +22,6 @@
 	changed = green
 	untracked = red
 
-[core]
-	excludesfile = /Users/max/.gitignore_global
-
 [help]
 	# Automatically correct and execute mistyped commands
 	autoCorrect = 0
