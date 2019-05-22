@@ -14,4 +14,6 @@ fi
 
 # Note that ~/.bash_rc is not read by any program, and ~/.bashrc is the configuration file of interactive instances of bash. You should not define environment variables in ~/.bashrc. The right place to define environment variables such as PATH is ~/.profile (or ~/.bash_profile if you don't care about shells other than bash). 
 
-export PATH="/usr/local/sbin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/grep/libexec/gnubin:$PATH:/Users/$(whoami)/bin"
+ORIG_PATH=$PATH
+
+export PATH="/usr/local/sbin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/grep/libexec/gnubin:$ORIG_PATH:/Users/$(whoami)/bin"

@@ -11,6 +11,9 @@ parse_git_branch() {
 export PS1="\W\$(parse_git_branch) $ "
 export EDITOR="/usr/local/bin/vim"
 
+# For making glob * include dotfiles
+shopt -s dotglob
+
 # Some formatting of history
 export HISTSIZE=300
 export HISTTIMEFORMAT='%b %d %R -> '

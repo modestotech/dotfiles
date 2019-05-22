@@ -74,6 +74,7 @@
 
 	# View a pretty git log with branch tree
 	g = !git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	gr = git log --graph --oneline --all
 
 	# Return a list of commit SHA1s
 	l = "!f() { git log $* | grep '^commit ' | cut -f 2 -d ' '; }; f"
