@@ -1,6 +1,29 @@
 echo -n "Uptime: "; uptime
-echo ""
 
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+case "${unameOut}" in
+    Linux*)     
+			# User specific environment
+			if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
+			then
+					PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+			fi
+			export PATH
+
+			# Uncomment the following line if you don't like systemctl's auto-paging feature:
+			# export SYSTEMD_PAGER=
+		;;
+    Darwin*)    
+			ORIG_PATH=$PATH
+			export PATH="/usr/local/sbin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/grep/libexec/gnubin:$ORIG_PATH:/Users/$(whoami)/bin"
+		;;
+esac
+
+# User specific aliases and functions
 source ~/.bash_aliases
 
 # For printing the current git branch

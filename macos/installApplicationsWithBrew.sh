@@ -88,9 +88,7 @@ brew install node
 brew install pandoc
 brew install tmux
 brew install tree # Prints dir tree
-brew install reattach-to-user-namespace # Needed for copy pasting from Tmux
 brew install watchman
-brew install z
 
 echo "Success! Brew utlity formulas are installed."
 sleep 1
