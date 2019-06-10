@@ -43,6 +43,7 @@ brew install gnu-which
 brew install gnutls
 brew install grep 
 brew install gzip
+brew install reattach-to-user-namespace # Needed for copy pasting from Tmux
 brew install screen
 brew install watch
 brew install wdiff
@@ -112,7 +113,6 @@ sleep 1
 
 # Utilities
 brew cask install cheatsheet
-brew cask install fanny
 brew cask install loading
 brew cask install minikube
 brew cask install shiftit
