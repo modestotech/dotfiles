@@ -99,5 +99,6 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias ll="ls -la"
-alias vim="gvim -v"
-alias vi="gvim -v"
+alias vi='vimx'
+alias vim='vimx'
+

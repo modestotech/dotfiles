@@ -12,8 +12,13 @@ source ~/.vimmappings
 source ~/.vimsnippets
 source ~/.vimfunctions
 
-" Clipboard setting for pbcopy and pbpaste to work
-set clipboard=unnamed
+let s:uname = system("echo -n \"$(uname)\"")
+if !v:shell_error && s:uname == "Linux"
+	set clipboard=unnamedplus
+endif	
+if !v:shell_error && s:uname == "Darwin"
+	set clipboard=unnamed
+endif	
 
 set backupdir=$HOME/.vim/backup//
 set directory=$HOME/.vim/swap//
