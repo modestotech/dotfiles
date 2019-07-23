@@ -42,3 +42,6 @@ shopt -s dotglob
 export HISTSIZE=300
 export HISTTIMEFORMAT='%b %d %R -> '
 export HISTIGNORE="?:??:history:pwd:exit:df:ls:ls -la:ll"
+
+# To use gitignore.io API
+function gi() { curl -sL https://www.gitignore.io/api/$@ ;}

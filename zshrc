@@ -102,3 +102,5 @@ alias ll="ls -la"
 alias vi='vimx'
 alias vim='vimx'
 
+# For using gitignore.io API
+function gi() { curl -sLw n https://www.gitignore.io/api/$@ ;}
