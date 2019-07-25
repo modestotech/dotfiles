@@ -17,6 +17,9 @@ Plugin 'tpope/vim-surround' "cs to change, ds to delete etc, cs't changes from '
 Plugin 'vim-scripts/ReplaceWithRegister' "gr command for replacing with register
 Plugin 'vim-scripts/loremipsum' "Lorem ipsum generator
 
+" Bash support
+Plugin 'bash-support.vim'
+
 " Javascript and React
 Plugin 'pangloss/vim-javascript' " Syntax highlighting for js
 Plugin 'mxw/vim-jsx' " Syntax highlighting for jsx
