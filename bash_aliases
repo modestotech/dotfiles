@@ -12,6 +12,8 @@ alias cl='clear'
 
 alias grep='grep --color=auto'
 
+alias gitdos2unix='dos2unix $(git status --porcelain | sed s/^...//)'
+
 # Cheat sheets
 alias cheatvim='mdless ~/cheatsheets/vim.md'
 alias cheatbash='mdless ~/cheatsheets/bash.md'
