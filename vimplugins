@@ -14,8 +14,6 @@ Plugin 'tpope/vim-commentary' "gc to comment, gcc whole line
 Plugin 'tpope/vim-repeat' "permits more repeating
 Plugin 'tpope/vim-unimpaired' "maps [], ex [<space> adds a line before current line, [e, ]e to move lines up and down
 Plugin 'tpope/vim-surround' "cs to change, ds to delete etc, cs't changes from ' to html tags  
-Plugin 'vim-scripts/ReplaceWithRegister' "gr command for replacing with register
-Plugin 'vim-scripts/loremipsum' "Lorem ipsum generator
 
 " Bash support
 Plugin 'bash-support.vim'
@@ -25,15 +23,8 @@ Plugin 'pangloss/vim-javascript' " Syntax highlighting for js
 Plugin 'mxw/vim-jsx' " Syntax highlighting for jsx
 Plugin 'mattn/emmet-vim' " Emmet for vim
 
-Plugin 'w0rp/ale' " Asynchronous linting/fixing for Vim and Language Server Protocol integration
-Plugin 'skywind3000/asyncrun.vim' " For running async operators
-
-Plugin 'JamshedVesuna/vim-markdown-preview'
-Plugin 'mileszs/ack.vim' 
-
 " Git
 Plugin 'tpope/vim-fugitive' " Vim wrapper
-Plugin 'itchyny/vim-gitbranch' " For getting current branch
 
 " Tmux
 Plugin 'christoomey/vim-tmux-navigator'

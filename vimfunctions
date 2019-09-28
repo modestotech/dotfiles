@@ -17,3 +17,15 @@ function! ToggleNetrw()
         silent Lexplore
     endif
 endfunction
+
+function! GitInfo()
+  let git = fugitive#head()
+
+  if git != ''
+
+    return ' '.fugitive#head()
+
+  else
+
+    return ''
+endfunction
