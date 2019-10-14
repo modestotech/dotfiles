@@ -23,7 +23,7 @@ function! GitInfo()
 
   if git != ''
 
-    return ' '.fugitive#head()
+    return '⚡ '.fugitive#head()
 
   else
 
