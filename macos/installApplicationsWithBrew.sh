@@ -117,9 +117,6 @@ brew cask install loading
 brew cask install minikube
 brew cask install shiftit
 
-# Quick Look Plugins (https://github.com/sindresorhus/quick-look-plugins)
-brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json webpquicklook suspicious-package quicklookase qlvideo
-
 echo "Success! MacOS utilities are installed with brew cask."
 sleep 1
 
