@@ -103,5 +103,8 @@
 	# Thin out older metadata within the repository, reduceses filesystem footprint
 	trim = !git reflog expire --expire=now --all && git gc --prune=now
 
+	# Special side by side diff
+	vimdiff = difftool --tool=vimdiff2 --no-prompt
+
 [credential]
 	helper = osxkeychain
