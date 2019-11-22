@@ -1,0 +1,29 @@
+pane	api	1	:peab	1	:*	0	:/Users/max/repos/SE_API_PEAB	1	zsh	:
+pane	jobs	1	:avtal	0	:	0	:/Users/max/repos/SE_Job_KommersImport	1	zsh	:
+pane	jobs	2	:guard	1	:*	0	:/Users/max/repos/SE_Job_Guard	1	zsh	:
+pane	jobs	3	:fortnox	0	:-	0	:/Users/max/repos/SE_Job_Fortnox	1	zsh	:
+pane	misc	1	:zsh	1	:*	0	:/Users/max/.tmux/resurrect	0	zsh	:
+pane	misc	1	:zsh	1	:*	1	:/Users/max/dotfiles	1	zsh	:
+pane	services	1	:trans-se	0	:-	0	:/Users/max/repos/SE_Service_TransactionService	1	zsh	:
+pane	services	2	:trans-no	1	:*	0	:/Users/max/repos/NO_Service_TransactionService/NOTransactionService	1	zsh	:
+pane	web-apps	1	:flux-se	0	:-	0	:/Users/max/repos/SE_Web_Flux/InyettFlux/AngularJS	1	zsh	:
+pane	web-apps	1	:flux-se	0	:-	1	:/Users/max/repos/SE_Web_Flux	0	zsh	:
+pane	web-apps	2	:flux-no	0	:	0	:/Users/max/repos/NO_Web_Portal	1	zsh	:
+pane	web-apps	2	:flux-no	0	:	1	:/Users/max/repos/NO_Web_Portal/NOInyettFlux/NOFluxFrontend	0	zsh	:
+pane	web-apps	3	:admin-se	0	:	0	:/Users/max/repos/SE_Web_Admin	1	zsh	:
+pane	web-apps	4	:admin-no	0	:	0	:/Users/max/repos/NO_Web_Admin	1	zsh	:
+pane	web-apps	4	:admin-no	0	:	1	:/Users/max/repos/NO_Web_Admin/NOInyettAdmin/NOAdminFrontend	0	zsh	:
+pane	web-apps	5	:fortnox	1	:*	0	:/Users/max/repos/SE_Web_Fortnox	1	zsh	:
+window	api	1	1	:*	5d66,236x62,0,0,17
+window	jobs	1	0	:	ba64,236x62,0,0,7
+window	jobs	2	1	:*	ba65,236x62,0,0,8
+window	jobs	3	0	:-	5d62,236x62,0,0,13
+window	misc	1	1	:*	19a5,236x62,0,0[236x30,0,0,28,236x31,0,31,29]
+window	services	1	0	:-	ba62,236x62,0,0,5
+window	services	2	1	:*	ba63,236x62,0,0,6
+window	web-apps	1	0	:-	a74a,236x62,0,0[236x30,0,0,2,236x31,0,31,1]
+window	web-apps	2	0	:	eca9,236x62,0,0{122x62,0,0,3,113x62,123,0,4}
+window	web-apps	3	0	:	ba66,236x62,0,0,9
+window	web-apps	4	0	:	5998,236x62,0,0[236x30,0,0,10,236x31,0,31,11]
+window	web-apps	5	1	:*	5d62,236x62,0,0,32
+state	misc	jobs
