@@ -74,18 +74,18 @@ brew install zsh
 echo "Outdated non-GNU brew packages are installed."
 sleep 1
 
+# Install nvm with node
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash
+
 # Install utility packages
-brew install awscli
 brew install cloc
 brew install dockutil
 brew install htop
 brew install httpie
-brew install kubernetes-cli
 brew install lynx
 brew install mas
 brew install markdown
 brew install mongodb
-brew install node
 brew install pandoc
 brew install tmux
 brew install tree # Prints dir tree
@@ -105,7 +105,6 @@ brew cask install virtualbox
 # Frameworks etc
 brew cask install java
 brew cask install osxfuse # File system stuff
-brew install git-credential-manager # Has to be installed after java
 brew install sshfs # For access to remote older with ssh
 
 echo "Success! MacOS applications are installed with brew cask."
