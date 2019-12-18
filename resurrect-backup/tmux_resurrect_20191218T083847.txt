@@ -20,7 +20,7 @@ pane	jobs	6	:kommers	0	:	0	:/Users/max/repos/SE_Job_KommersImport	1	zsh	:
 pane	jobs	7	:lime-to-sql	0	:	0	:/Users/max/repos/SE_Job_IntegrationLime	1	zsh	:
 pane	jobs	8	:xledger	1	:*	0	:/Users/max/repos/SE_Job_Xledger	1	zsh	:
 pane	misc	1	:dotfiles	1	:*	0	:/Users/max/temp	0	zsh	:
-pane	misc	1	:dotfiles	1	:*	1	:/Users/max/dotfiles/resurrect-backup	1	zsh	:
+pane	misc	1	:dotfiles	1	:*	1	:/Users/max/dotfiles	1	zsh	:
 pane	misc	2	:dummy	0	:-	0	:/Users/max/repos/SE_DLL_InyettAgressoInterface	1	zsh	:
 pane	services	1	:trans-se	1	:*	0	:/Users/max/repos/SE_Service_TransactionService	1	zsh	:
 pane	services	2	:trans-no	0	:	0	:/Users/max/repos/NO_Service_TransactionService/NOTransactionService	1	zsh	:
