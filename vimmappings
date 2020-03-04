@@ -3,6 +3,7 @@ let mapleader = ","
 " Leader commands
 " Toggle scrollbind
 nnoremap <leader>b :set scrollbind!<CR> :set scrollbind?<CR>
+nnoremap <leader>c :set cursorbind!<CR> :set cursorbind?<CR>
 
 " Toggle spell check
 nnoremap <leader>s :setlocal spell!<CR> :setlocal spell?<CR>

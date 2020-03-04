@@ -57,11 +57,11 @@
 	# Diff to previous branch
 	comp = diff HEAD^
 
-	# Just diff
+	# Just
 	d = diff
-
-	# Diff stat
-	ds = diff --stat
+	dst = diff --stat
+	dsd = diff --staged
+	dss = diff --stat --staged
 
 	# View the log and diff for a commit (previous if no SHA1 provided)
 	det = log -n1 -p --format=fuller
@@ -105,6 +105,12 @@
 
 	# Special side by side diff
 	vimdiff = difftool --tool=vimdiff2 --no-prompt
+
+	# Git addnw to only add changes that aren't white space
+	diffnw = !git diff -U0 -w --no-color "$@"
+
+	# Git addnw to only add changes that aren't white space
+	addnw = !git diffnw | git apply --cached --ignore-whitespace --unidiff-zero
 
 [credential]
 	helper = osxkeychain
