@@ -109,5 +109,19 @@ case `uname` in
   ;;
 esac
 
-# For using gitignore.io API
-function gi() { curl -sLw n https://www.gitignore.io/api/$@ ;}
+function toggleSuspend()
+{
+	CURRENT_STATUS=$( gsettings get org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type )
+
+	echo "Current status is $CURRENT_STATUS"
+
+	if [[ "$CURRENT_STATUS" =~ 'nothing' ]]; then
+		gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'suspend' 
+		echo "Activating automatic suspend"
+	elif [[ "$CURRENT_STATUS" =~ 'suspend' ]]; then
+		gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'nothing' 
+		echo "Disactivating automatic suspend"
+	else
+		echo "Doing nothing"
+	fi
+}

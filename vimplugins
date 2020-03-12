@@ -20,7 +20,6 @@ Plugin 'bash-support.vim'
 
 " Javascript and React
 Plugin 'pangloss/vim-javascript' " Syntax highlighting for js
-Plugin 'mxw/vim-jsx' " Syntax highlighting for jsx
 Plugin 'mattn/emmet-vim' " Emmet for vim
 
 " Git

@@ -3,6 +3,7 @@
 
 vim/backup/*
 vim/swap/*
+vim/**/*spl
 !vim/backup/.gitkeep
 !vim/swap/.gitkeep
 
