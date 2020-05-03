@@ -29,6 +29,9 @@ noremap <C-w><Down> :resize -5<CR>
 noremap <C-w><Left> :vertical:resize -5<CR>
 noremap <C-w><Right> :vertical:resize +5<CR>
 
+nnoremap ö [
+nnoremap ä ]
+
 " Opens file under cursor in new vertical split
 nnoremap gf :vertical wincmd f<CR>
 

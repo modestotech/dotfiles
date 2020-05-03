@@ -109,8 +109,5 @@
 	# Git addnw to only add changes that aren't white space
 	diffnw = !git diff -U0 -w --no-color "$@"
 
-	# Git addnw to only add changes that aren't white space
-	addnw = !git diffnw | git apply --cached --ignore-whitespace --unidiff-zero
-
 [credential]
 	helper = osxkeychain
