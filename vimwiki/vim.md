@@ -16,8 +16,10 @@ Jumping around, in same file, in other files, etc.
 Avoid clicking `hjkl` repetitively. Instead move around by clicking `HML` (High, Medium, Low), or `<C-U>` respectively `<C-D>`.
 Also, remember to use motions and operators, to go where you want, *faster*.
 
-### Searching
+### File browsing
 The `:find` command is great, especially when configured to accept tab and wild card searches.
+The netrw file browser has a bad fame, but with some tweaks it works OK, and plugins can be avoided. Some tips from [this](https://shapeshed.com/vim-netrw/) article:
+  * TODO
 
 ### Tag
 Tags are followed by using `<C-¨>` (to the right of `å`). This is strange, but it's because on an English keyboard, `]` is placed here.
