@@ -32,17 +32,6 @@ noremap <C-w><Right> :vertical:resize +5<CR>
 " Opens file under cursor in new vertical split
 nnoremap gf :vertical wincmd f<CR>
 
-" Delete forward
-inoremap <C-d> <Del>
-
-" Mapping the vim-unimpaired commands
-nmap ö [
-nmap ä ]
-omap ö [
-omap ä ]
-xmap ö [
-xmap ä ]
-
 " Closing brackets automagically
 inoremap { {}<left>
 inoremap {{ {

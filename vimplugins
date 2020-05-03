@@ -12,7 +12,6 @@ Plugin 'VundleVim/Vundle.vim'
 " Custom operators
 Plugin 'tpope/vim-commentary' "gc to comment, gcc whole line
 Plugin 'tpope/vim-repeat' "permits more repeating
-Plugin 'tpope/vim-unimpaired' "maps [], ex [<space> adds a line before current line, [e, ]e to move lines up and down
 Plugin 'tpope/vim-surround' "cs to change, ds to delete etc, cs't changes from ' to html tags  
 
 " Git

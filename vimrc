@@ -156,6 +156,9 @@ set t_Co=256
 set background=dark
 colorscheme industry
 
+let g:vimwiki_list = [{'path': '~/dotfiles//vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
+
 au BufRead,BufNewFile *vim* set filetype=vim
 
 " Rebuild spell files

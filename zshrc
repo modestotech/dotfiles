@@ -106,22 +106,32 @@ case `uname` in
   Linux)
     alias vi='vimx'
     alias vim='vimx'
+		alias pbcopy='xclip -selection clipboard'
+		alias pbpaste='xclip -selection clipboard -o'
+
+		function toggleSuspend()
+		{
+			CURRENT_STATUS=$( gsettings get org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type )
+
+			echo "Current status is $CURRENT_STATUS"
+
+			if [[ "$CURRENT_STATUS" =~ 'nothing' ]]; then
+				gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'suspend'
+				echo "Activating automatic suspend"
+			elif [[ "$CURRENT_STATUS" =~ 'suspend' ]]; then
+				gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'nothing'
+				echo "Disactivating automatic suspend"
+			else
+				echo "Doing nothing"
+			fi
+		}
   ;;
 esac
 
-function toggleSuspend()
-{
-	CURRENT_STATUS=$( gsettings get org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type )
+# To use gitignore.io API
+function gi() { curl -sL https://www.gitignore.io/api/$@ ;}
 
-	echo "Current status is $CURRENT_STATUS"
+function getLastCmd() { history | awk '{$1=""; print $0}' | tail -n1 | xargs ; }
+function copyLastCmd() { history | awk '{$1=""; print $0}' | tail -n1 | xargs | pcopy ; }
+function copyLastCmdOutput() { $(getLastCmd) | pbcopy ;}
 
-	if [[ "$CURRENT_STATUS" =~ 'nothing' ]]; then
-		gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'suspend' 
-		echo "Activating automatic suspend"
-	elif [[ "$CURRENT_STATUS" =~ 'suspend' ]]; then
-		gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'nothing' 
-		echo "Disactivating automatic suspend"
-	else
-		echo "Doing nothing"
-	fi
-}
