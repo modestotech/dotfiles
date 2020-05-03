@@ -9,13 +9,13 @@ nnoremap <leader>c :set cursorbind!<CR> :set cursorbind?<CR>
 nnoremap <leader>s :setlocal spell!<CR> :setlocal spell?<CR>
 
 " Clear search
-map <leader><space> :let @/=''<cr> 
+map <leader><space> :let @/=''<cr>
 
 " Formatting
 map <leader>q gqip
 
 " Toggle tabs and EOL
-map <leader>l :set list!<CR> 
+map <leader>l :set list!<CR>
 
 " Show dir tree structure
 map <leader>t :!tree $(pwd) -I node_modules \| less <CR>
@@ -35,16 +35,13 @@ nnoremap gf :vertical wincmd f<CR>
 " Delete forward
 inoremap <C-d> <Del>
 
-" Toggle explorer
-map <F2> :call ToggleNetrw()<CR>
-
 " Mapping the vim-unimpaired commands
 nmap ö [
 nmap ä ]
 omap ö [
 omap ä ]
 xmap ö [
-xmap ä ] 
+xmap ä ]
 
 " Closing brackets automagically
 inoremap { {}<left>

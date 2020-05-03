@@ -23,8 +23,6 @@ sleep 1
 
 # Apps
 sudo dnf install chromium
-# TODO VS Code
-# TODO Virtualbox
 
 echo "Success! Apps have been installed."
 sleep 1

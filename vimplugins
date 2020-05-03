@@ -15,19 +15,14 @@ Plugin 'tpope/vim-repeat' "permits more repeating
 Plugin 'tpope/vim-unimpaired' "maps [], ex [<space> adds a line before current line, [e, ]e to move lines up and down
 Plugin 'tpope/vim-surround' "cs to change, ds to delete etc, cs't changes from ' to html tags  
 
-" Bash support
-Plugin 'bash-support.vim'
-
-" Javascript and React
-Plugin 'pangloss/vim-javascript' " Syntax highlighting for js
-Plugin 'mattn/emmet-vim' " Emmet for vim
-
 " Git
 Plugin 'tpope/vim-fugitive' " Vim wrapper
 
 " Tmux
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'melonmanchan/vim-tmux-resizer' " Semless pane resizing for vim and Tmux
+
+Plugin 'vimwiki/vimwiki' 
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

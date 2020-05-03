@@ -1,13 +1,6 @@
 " Load plugins with Vundle
 source ~/.vimplugins
 
-" Make vim recognize jsx files automatically
-let g:user_emmet_settings = {
-  \  'javascript.jsx' : {
-    \      'extends' : 'jsx',
-    \  },
-  \}
-
 source ~/.vimmappings 
 source ~/.vimsnippets
 source ~/.vimfunctions
@@ -20,8 +13,13 @@ if !v:shell_error && s:uname == "Darwin"
 	set clipboard=unnamed
 endif	
 
-set backupdir=$HOME/.vim/backup//
-set directory=$HOME/.vim/swap//
+" Sends backups out of the working directory
+" Removes the current directory from the backup directory list (to keep the ~ backups out of your working directories).
+" Save backups to ~/tmp, or to /tmp if that's not possible.
+set backupdir-=.
+set backupdir^=~/tmp,/tmp
+set directory-=.
+set directory^=~/tmp,/tmp
 
 " FINDING FILES:
 " Setup for searching down into subfolders
@@ -82,11 +80,12 @@ let &t_SR.="\e[4 q" " Steady underline in replace mode
 runtime! macros/matchit.vim
 
 " Setup netrw file explorer
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-let g:netrw_winsize = 25
+let g:netrw_banner=0        " disable annoying banner
+let g:netrw_browse_split=4  " open in prior window
+let g:netrw_altv=1          " open splits to the right
+let g:netrw_liststyle=3     " tree view
+let g:netrw_list_hide=netrw_gitignore#Hide()
+let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 
 " Allow hidden buffers
 set hidden
