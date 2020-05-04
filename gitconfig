@@ -23,6 +23,8 @@
 	untracked = red
 
 [core]
+	autocrlf = input
+	eol = lf
 	commentChar = "@"
 
 [help]
