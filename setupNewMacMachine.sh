@@ -7,7 +7,7 @@ function doIt() {
 	bash ~/dotfiles/installScripts/pre-setup.sh
 	bash ~/dotfiles/installScripts/makeSymlinks.sh 
 	bash ~/dotfiles/macos/installApplicationsWithBrew.sh
-	bash ~/dotfiles/macos/setupMacOsDefaults.sh
+	#bash ~/dotfiles/macos/setupMacOsDefaults.sh
 	bash ~/dotfiles/macos/setupDock.sh
 	bash ~/dotfiles/installScripts/setupTerminal.sh
 	bash ~/dotfiles/installScripts/setupGit.sh

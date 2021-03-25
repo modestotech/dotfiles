@@ -83,19 +83,15 @@ brew install dockutil
 brew install htop
 brew install httpie
 brew install lynx
-brew install mas
 brew install markdown
-brew install mongodb
 brew install pandoc
 brew install tmux
-brew install tree # Prints dir tree
 brew install watchman
 
 echo "Success! Brew utlity formulas are installed."
 sleep 1
 
 # Apps
-brew cask install dropbox
 brew cask install google-chrome
 brew cask install google-backup-and-sync
 brew cask install postman
@@ -105,16 +101,11 @@ brew cask install virtualbox
 # Frameworks etc
 brew cask install java
 brew cask install osxfuse # File system stuff
-brew install sshfs # For access to remote older with ssh
 
 echo "Success! MacOS applications are installed with brew cask."
 sleep 1
 
 # Utilities
-brew cask install cheatsheet
-brew cask install loading
-brew cask install minikube
-brew cask install shiftit
 
 echo "Success! MacOS utilities are installed with brew cask."
 sleep 1
