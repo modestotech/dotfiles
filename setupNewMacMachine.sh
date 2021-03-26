@@ -11,6 +11,7 @@ function doIt() {
 	bash ~/dotfiles/macos/setupDock.sh
 	bash ~/dotfiles/installScripts/setupTerminal.sh
 	bash ~/dotfiles/installScripts/setupGit.sh
+	bash ~/dotfiles/installScripts/cloneZshPlugins.sh
 	tmux source-file ~/.tmux.conf 
 	source ~/.bash_profile;
 }
