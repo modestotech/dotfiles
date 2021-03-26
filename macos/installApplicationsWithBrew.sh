@@ -68,6 +68,11 @@ brew install zsh
 echo "Outdated non-GNU brew packages are installed."
 sleep 1
 
+echo "Some zsh plugins not included per default"
+sleep 1
+
+brew install zsh-autosuggestions zsh-syntax-highlighting zsh-completions 
+
 # Install nvm with node
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash
 
