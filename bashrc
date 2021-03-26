@@ -45,3 +45,7 @@ export HISTIGNORE="?:??:history:pwd:exit:df:ls:ls -la:ll"
 
 # To use gitignore.io API
 function gi() { curl -sL https://www.gitignore.io/api/$@ ;}
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

@@ -115,3 +115,6 @@
 	helper = osxkeychain
 [pull]
 	rebase = false
+[user]
+	name = Max Modesto Wallin
+	email = max.modesto@visma.com
