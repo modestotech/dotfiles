@@ -96,6 +96,7 @@ brew install slack
 
 # Frameworks etc
 brew install java
+brew install dotnet
 brew install osxfuse # File system stuff
 
 echo "Success! MacOS applications are installed with brew cask."
