@@ -40,13 +40,16 @@
 
 [alias]
 	aa = add .
-	fodd = fetch origin develop:develop
 	ca = commit --amend
 	can = commit --amend --no-edit
 	co = checkout
 	cod = checkout develop
+	d = branch -d
+	D = branch -D
+	fodd = fetch origin develop:develop
 	p = pull
 	pfwl = push --force-with-lease
+	rpo = remote prune origin
 	reb = "!sh -c 'git fetch --prune > /dev/null 2>&1 && git branch -vv | findstr \": gone]\" | awk \"{print \\$1}\"'"
 	rec = rebase --continue
 	red = rebase develop
