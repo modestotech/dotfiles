@@ -18,3 +18,8 @@
 | Text Extractor       | Win+Shift+T          | Part of Powertoys           |
 | Find my mouse        | Ctrl x 2             |                            |
 | Highlight clicks     | Win+Shift+H          |                            |
+
+## CLI
+| Feature              | Shortcut              | Note                       |
+|----------------------|-----------------------|----------------------------|
+| Reverse search       | Ctrl+r                |                            |
