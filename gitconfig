@@ -41,6 +41,7 @@
 	can = commit --amend --no-edit
 	co = checkout
 	cod = checkout develop
+  bad = branch -a --merged
 	d = branch -d
 	D = branch -D
 	fodd = fetch origin develop:develop
