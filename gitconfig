@@ -33,10 +33,7 @@
 	commentChar = "@"
 
 [fetch]
-	prune = false
-
-[safe]
-	directory = *
+	prune = true
 
 [alias]
 	aa = add .
