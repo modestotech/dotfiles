@@ -1,6 +1,0 @@
-#! /bin/bash
-
-# A dumb little hello world script 
-# Author: modestotech
-
-echo "Max is $(whoami)"
