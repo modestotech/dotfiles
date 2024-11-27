@@ -24,6 +24,8 @@ Here is a clean setup for a work machine:
 <?xml version="1.0" encoding="utf-8"?>
 <packages>
   <package id="azure-cli" />
+  <package id="azurestorageemulator" />
+  <package id="azure-functions-core-tools" />
   <package id="bitwarden" />
   <package id="brave" />
   <package id="curl" />
