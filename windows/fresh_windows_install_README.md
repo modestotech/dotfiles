@@ -35,6 +35,7 @@ Here is a clean setup for a work machine:
   <package id="GoogleChrome" />
   <package id="insomnia-rest-api-client" />
   <package id="licecap" />
+  <package id="kubernetes-cli" />
   <package id="notepadplusplus" />
   <package id="ngrok" />
   <package id="nvm" />
