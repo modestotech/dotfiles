@@ -26,13 +26,11 @@ Here is a clean setup for a work machine:
 <packages>
   <package id="azure-cli" />
   <package id="bitwarden" />
-  <package id="brave" />
   <package id="curl" />
   <package id="devtoys" />
   <package id="Firefox" />
   <package id="git" />
   <package id="GoogleChrome" />
-  <package id="insomnia-rest-api-client" />
   <package id="licecap" />
   <package id="kubernetes-cli" />
   <package id="notepadplusplus" />
@@ -50,9 +48,9 @@ Here is a clean setup for a work machine:
 
 Here are some more packages, for a home setup:
 ```
+  <package id="brave" />
   <package id="adobedigitaleditions" />
   <package id="calibre" />
-  <package id="pgadmin4" />
   <package id="mullvad-app" />
 ```
 
