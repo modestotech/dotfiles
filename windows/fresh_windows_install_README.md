@@ -6,6 +6,7 @@ Some stuff manually, and then use Chocolatey.
 - WSL2
 - Docker Desktop
 - Visual Studio with .NET stuff
+- Windows terminal
 
 ### Dotnet
 Runtime and SDK can be downloaded through Visual studio, no nice way to do it through package manager at the moment.
@@ -24,8 +25,6 @@ Here is a clean setup for a work machine:
 <?xml version="1.0" encoding="utf-8"?>
 <packages>
   <package id="azure-cli" />
-  <package id="azurestorageemulator" />
-  <package id="azure-functions-core-tools" />
   <package id="bitwarden" />
   <package id="brave" />
   <package id="curl" />
@@ -39,7 +38,6 @@ Here is a clean setup for a work machine:
   <package id="notepadplusplus" />
   <package id="ngrok" />
   <package id="nvm" />
-  <package id="microsoftazurestorageexplorer" />
   <package id="postman" />
   <package id="powertoys" />
   <package id="spotify" />
