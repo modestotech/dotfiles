@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packages>
+  <package id="Firefox" />
+  <package id="GoogleChrome" />
+  <package id="brave" />
+  <package id="bitwarden" />
+  <package id="licecap" />
+  <package id="postman" />
+  <package id="powertoys" />
+  <package id="spotify" />
+  <package id="winmerge" />
+  <package id="zoomit" />
+</packages>
