@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packages>
+  <package id="curl" />
+  <package id="devtoys" />
+  <package id="git" />
+  <package id="ngrok" />
+  <package id="nvm" />
+  <package id="vim" />
+  <package id="vscode" />
+  <package id="notepadplusplus" />
+</packages>
