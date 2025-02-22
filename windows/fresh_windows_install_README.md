@@ -90,13 +90,13 @@ Use Git Bash with Windows terminal
 Add `set bell-style none` in `~/.inputrc` if the terminal flickers.
 https://github.com/microsoft/terminal/issues/7200#issuecomment-672786518
 
+#### Linux terminal
+
+Run script in [./setup_linux_shell.sh](./setup_linux_shell.sh).
+
 ### Npp
 Setup Cloud storage to point to OneDrive synced files.
 https://superuser.com/a/1278765/986363
 
 ## Path
-### System
-- KUBE_EDITOR : vim
-- Path
-   - "C:\Program Files\Git\usr\bin"
-   - "C:\tools"
+Nothing it seems.
