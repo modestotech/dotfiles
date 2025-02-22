@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packages>
+  <package id="adobedigitaleditions" />
+  <package id="calibre" />
+  <package id="mullvad-app" />
+</packages>
