@@ -42,14 +42,6 @@ fi
 
 echo "Powerlevel10k set as the zsh theme."
 
-# Enable clipboard access
-print_msg "Enabling clipboard access..."
-sudo apt install -y clip
-if ! grep -q 'alias copy=' "$HOME/.zshrc"; then
-    echo "alias copy=\"clip.exe\"" >> "$HOME/.zshrc"
-    echo "Clipboard alias added: Use 'copy' to copy to Windows clipboard."
-fi
-
 # Set up VSCode integration
 print_msg "Setting up VSCode integration..."
 if ! command -v code &> /dev/null; then
@@ -65,21 +57,40 @@ if ! grep -q 'alias update=' "$HOME/.zshrc"; then
     echo "Alias 'update' added: Use 'update' to update and upgrade the system."
 fi
 
-# Create repos folder and set up SSH if it doesn't exist
-print_msg "Creating ~/repos folder and setting up SSH keys..."
+# Create repos folder
+print_msg "Creating ~/repos folder..."
 mkdir -p "$HOME/repos"
 echo "~/repos folder created."
 
-if [ ! -f "$HOME/.ssh/id_ed25519.pub" ]; then
-    print_msg "Generating SSH key (Ed25519)..."
-    mkdir -p "$HOME/.ssh"
-    ssh-keygen -t ed25519 -C "$(whoami)@$(hostname)" -f "$HOME/.ssh/id_ed25519" -N ""
+# Set up SSH symlinks from Windows for Git with logical grouping
+print_msg "Setting up SSH symlinks from Windows..."
+WINDOWS_SSH_DIR="/mnt/c/Users/$(cmd.exe /c "echo %USERNAME%" | tr -d '\r')/.ssh"
+LINUX_SSH_DIR="$HOME/.ssh"
+
+mkdir -p "$LINUX_SSH_DIR"
+
+if [ -f "$WINDOWS_SSH_DIR/id_ed25519" ] && [ -f "$WINDOWS_SSH_DIR/id_ed25519.pub" ]; then
+    ln -sf "$WINDOWS_SSH_DIR/id_ed25519" "$LINUX_SSH_DIR/id_ed25519"
+    ln -sf "$WINDOWS_SSH_DIR/id_ed25519.pub" "$LINUX_SSH_DIR/id_ed25519.pub"
+    chmod 600 "$LINUX_SSH_DIR/id_ed25519"
+    chmod 644 "$LINUX_SSH_DIR/id_ed25519.pub"
+    echo "SSH keys symlinked from Windows."
+
+    # SSH agent setup and GitHub connection test only if symlinks were successful
+    print_msg "Starting ssh-agent and adding SSH key..."
     eval "$(ssh-agent -s)"
-    ssh-add "$HOME/.ssh/id_ed25519"
-    echo "SSH key generated. Public key is:"
-    cat "$HOME/.ssh/id_ed25519.pub"
+    if ssh-add "$LINUX_SSH_DIR/id_ed25519"; then
+        print_msg "Testing SSH connection to GitHub..."
+        if ssh -T git@github.com; then
+            echo "SSH connection to GitHub successful."
+        else
+            echo "SSH connection to GitHub failed. Ensure the SSH key is added to your GitHub account."
+        fi
+    else
+        echo "Failed to add SSH key. Check key existence and permissions."
+    fi
 else
-    echo "ed25519 SSH key already exists."
+    echo "Windows SSH keys not found. Please ensure SSH keys exist in $WINDOWS_SSH_DIR."
 fi
 
 print_msg "Setup complete! Restart your terminal for all changes to take effect."
