@@ -20,41 +20,7 @@ Install VS externally as well, worked through chocolatey but easier to stick wit
 ### Chocolatey
 `choco export` to export packages, note that this includes all packages, not only the ones you've specifically installed.
 
-Here is a clean setup for a work machine:
-```
-<?xml version="1.0" encoding="utf-8"?>
-<packages>
-  <package id="azure-cli" />
-  <package id="bitwarden" />
-  <package id="curl" />
-  <package id="devtoys" />
-  <package id="Firefox" />
-  <package id="git" />
-  <package id="GoogleChrome" />
-  <package id="licecap" />
-  <package id="kubernetes-cli" />
-  <package id="notepadplusplus" />
-  <package id="ngrok" />
-  <package id="nvm" />
-  <package id="postman" />
-  <package id="powertoys" />
-  <package id="spotify" />
-  <package id="vim" />
-  <package id="vscode" />
-  <package id="winmerge" />
-  <package id="zoomit" />
-</packages>
-```
-
-Here are some more packages, for a home setup:
-```
-  <package id="brave" />
-  <package id="adobedigitaleditions" />
-  <package id="calibre" />
-  <package id="mullvad-app" />
-```
-
-`choco install packages.config` to install packages
+See xml files in [./choco](./choco) directory. Invoke `choco install packages.config` to install packages
 
 ### nvm
 - `nvm i lts`
