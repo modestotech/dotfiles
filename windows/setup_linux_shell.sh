@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# The script needs to be run a couple of times for all to take effect.
+
 set -e  # Exit on error
 
 # Function to print messages
