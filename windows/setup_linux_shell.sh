@@ -33,16 +33,68 @@ else
     echo "zsh already installed."
 fi
 
-# Install Powerlevel10k theme if not installed
+        sed -i 's|^ZSH_THEME=.*|ZSH_THEME=\"powerlevel10k/powerlevel10k\"|' "$HOME/.zshrc"
+# Install Oh My Zsh and Powerlevel10k theme if not installed
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+    echo "Installing Oh My Zsh..."
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" || {
+        echo "Failed to install Oh My Zsh." && exit 1
+    }
+fi
+
+# Install Powerlevel10k theme
 if [ ! -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k" ]; then
-    print_msg "Installing Powerlevel10k theme..."
+    echo "Installing Powerlevel10k theme..."
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git \
         ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
+    # Set theme in .zshrc
     if grep -q '^ZSH_THEME=' "$HOME/.zshrc"; then
-        sed -i 's/^ZSH_THEME=.*/ZSH_THEME="powerlevel10k\\/powerlevel10k"/' "$HOME/.zshrc"
+        sed -i 's|^ZSH_THEME=.*|ZSH_THEME=\"powerlevel10k/powerlevel10k\"|' "$HOME/.zshrc"
     else
         echo 'ZSH_THEME="powerlevel10k/powerlevel10k"' >> "$HOME/.zshrc"
+    fi
+
+    # Create default .p10k.zsh with sensible defaults if not present
+    if [ ! -f "$HOME/.p10k.zsh" ]; then
+        cat <<'EOF' > "$HOME/.p10k.zsh"
+# Default Powerlevel10k configuration
+# Prompt style: Lean, concise, with Git info and time
+
+# Enable instant prompt for fast shell startup
+POWERLEVEL9K_INSTANT_PROMPT=quiet
+
+# Prompt appearance
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time time)
+
+# Time format (24-hour)
+POWERLEVEL9K_TIME_FORMAT='%D{%H:%M:%S}'
+POWERLEVEL9K_TIME_UPDATE_ON_COMMAND=true
+
+# Git status formatting
+POWERLEVEL9K_VCS_CLEAN_FOREGROUND=green
+POWERLEVEL9K_VCS_MODIFIED_FOREGROUND=yellow
+POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND=red
+
+# Prompt character settings
+POWERLEVEL9K_PROMPT_CHAR_OK_VIVIS_FOREGROUND=green
+POWERLEVEL9K_PROMPT_CHAR_ERROR_VIVIS_FOREGROUND=red
+POWERLEVEL9K_PROMPT_CHAR_LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL=''
+POWERLEVEL9K_PROMPT_CHAR_LEFT_PROMPT_FIRST_SEGMENT_END_SYMBOL=''
+
+# Performance optimizations
+POWERLEVEL9K_DISABLE_HOT_RELOAD=true
+
+# Source Powerlevel10k theme
+[[ ! -f ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k/powerlevel10k.zsh-theme ]] || \
+    source ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k/powerlevel10k.zsh-theme
+EOF
+    fi
+
+    # Source .p10k.zsh in .zshrc if not already included
+    if ! grep -q '\\.p10k\\.zsh' "$HOME/.zshrc"; then
+        echo '[ -f ~/.p10k.zsh ] && source ~/.p10k.zsh' >> "$HOME/.zshrc"
     fi
 else
     echo "Powerlevel10k theme already installed."
