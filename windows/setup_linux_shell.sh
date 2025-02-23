@@ -52,12 +52,6 @@ install_powerlevel10k() {
         print_msg "Installing Powerlevel10k theme..."
         git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$theme_dir"
         sed -i 's|^ZSH_THEME=.*|ZSH_THEME=\"powerlevel10k/powerlevel10k\"|' "$HOME/.zshrc" || echo 'ZSH_THEME="powerlevel10k/powerlevel10k"' >> "$HOME/.zshrc"
-        echo '[ -f ~/.p10k.zsh ] && source ~/.p10k.zsh' >> "$HOME/.zshrc"
-
-    # Source .p10k.zsh in .zshrc if not already included
-    if ! grep -q '\\.p10k\\.zsh' "$HOME/.zshrc"; then
-        echo '[ -f ~/.p10k.zsh ] && source ~/.p10k.zsh' >> "$HOME/.zshrc"
-    fi
     else
         echo "Powerlevel10k theme already installed."
     fi
@@ -69,7 +63,7 @@ setup_ssh() {
     local linux_ssh_dir="$HOME/.ssh"
 
     mkdir -p "$linux_ssh_dir"
-    chmod 600 "$linux_ssh_dir"
+    chmod 700 "$linux_ssh_dir"
 
     if [ -f "$win_ssh_dir/id_ed25519" ]; then
         sudo cp "$win_ssh_dir/id_ed25519" "$linux_ssh_dir/id_ed25519"
@@ -128,13 +122,9 @@ install_dotnet() {
 install_nvm_node() {
     if [ ! -d "$HOME/.nvm" ]; then
         print_msg "Installing NVM and Node.js..."
-        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-        echo 'export NVM_DIR="$HOME/.nvm"' >> "$HOME/.zshrc"
-        echo '[ -s "$NVM_DIR/nvm.sh" ] && \\. "$NVM_DIR/nvm.sh"' >> "$HOME/.zshrc"
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash        
     fi
-    export NVM_DIR="$HOME/.nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-    nvm install node && nvm use node
+    nvm install latest && nvm use latest
     echo "NVM and Node.js set up."
 }
 
