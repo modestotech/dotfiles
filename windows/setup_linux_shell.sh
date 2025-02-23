@@ -2,10 +2,6 @@
 
 set -e
 
-# Ask for sudo permissions upfront
-sudo -v
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
-
 # Function to print messages
 print_msg() {
     echo "==============================="
@@ -33,7 +29,6 @@ else
     echo "zsh already installed."
 fi
 
-        sed -i 's|^ZSH_THEME=.*|ZSH_THEME=\"powerlevel10k/powerlevel10k\"|' "$HOME/.zshrc"
 # Install Oh My Zsh and Powerlevel10k theme if not installed
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
     echo "Installing Oh My Zsh..."
@@ -53,48 +48,6 @@ if [ ! -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k" ]; then
         sed -i 's|^ZSH_THEME=.*|ZSH_THEME=\"powerlevel10k/powerlevel10k\"|' "$HOME/.zshrc"
     else
         echo 'ZSH_THEME="powerlevel10k/powerlevel10k"' >> "$HOME/.zshrc"
-    fi
-
-    # Create default .p10k.zsh with sensible defaults if not present
-    if [ ! -f "$HOME/.p10k.zsh" ]; then
-        cat <<'EOF' > "$HOME/.p10k.zsh"
-# Default Powerlevel10k configuration
-# Prompt style: Lean, concise, with Git info and time
-
-# Enable instant prompt for fast shell startup
-POWERLEVEL9K_INSTANT_PROMPT=quiet
-
-# Prompt appearance
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time time)
-
-# Time format (24-hour)
-POWERLEVEL9K_TIME_FORMAT='%D{%H:%M:%S}'
-POWERLEVEL9K_TIME_UPDATE_ON_COMMAND=true
-
-# Git status formatting
-POWERLEVEL9K_VCS_CLEAN_FOREGROUND=green
-POWERLEVEL9K_VCS_MODIFIED_FOREGROUND=yellow
-POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND=red
-
-# Prompt character settings
-POWERLEVEL9K_PROMPT_CHAR_OK_VIVIS_FOREGROUND=green
-POWERLEVEL9K_PROMPT_CHAR_ERROR_VIVIS_FOREGROUND=red
-POWERLEVEL9K_PROMPT_CHAR_LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL=''
-POWERLEVEL9K_PROMPT_CHAR_LEFT_PROMPT_FIRST_SEGMENT_END_SYMBOL=''
-
-# Performance optimizations
-POWERLEVEL9K_DISABLE_HOT_RELOAD=true
-
-# Source Powerlevel10k theme
-[[ ! -f ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k/powerlevel10k.zsh-theme ]] || \
-    source ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k/powerlevel10k.zsh-theme
-EOF
-    fi
-
-    # Source .p10k.zsh in .zshrc if not already included
-    if ! grep -q '\\.p10k\\.zsh' "$HOME/.zshrc"; then
-        echo '[ -f ~/.p10k.zsh ] && source ~/.p10k.zsh' >> "$HOME/.zshrc"
     fi
 else
     echo "Powerlevel10k theme already installed."
@@ -130,17 +83,6 @@ WINDOWS_SSH_DIR="$WINDOWS_USER_HOME_PATH/.ssh"
 LINUX_SSH_DIR="$HOME/.ssh"
 mkdir -p "$LINUX_SSH_DIR"
 
-# WINDOWS_SSH_DIR="/mnt/c/Users/$WINDOWS_USER/.ssh"
-# WINDOWS_SSH_DIR="/mnt/c/Users/$(echo $USERPROFILE | sed 's/\\/\//g' | sed 's/://')/.ssh"
-# WINDOWS_USER=$(wslpath "$(cmd.exe /c 'echo %USERPROFILE%' | tr -d '\r')")
-# WINDOWS_SSH_DIR="/mnt/c/Users/$(cmd.exe /c 'echo %USERNAME%' | tr -d '\r')/.ssh"
-
-# Log paths for debugging
-echo "WINDOWS_SSH_DIR: $WINDOWS_SSH_DIR"
-echo "LINUX_SSH_DIR: $LINUX_SSH_DIR"
-echo "HOME: $HOME"
-
-
 # Check for Windows SSH keys
 if [ -f "$WINDOWS_SSH_DIR/id_ed25519" ] && [ -f "$WINDOWS_SSH_DIR/id_ed25519.pub" ]; then
     # Create symlinks if they don't exist
@@ -153,6 +95,10 @@ if [ -f "$WINDOWS_SSH_DIR/id_ed25519" ] && [ -f "$WINDOWS_SSH_DIR/id_ed25519.pub
     else
         echo "SSH keys are already symlinked."
     fi
+
+    # Set permissions on SSH dirs
+    chmod 700 $LINUX_SSH_DIR
+    chmod 600 "$LINUX_SSH_DIR/id_ed25519"
 
     # Start SSH agent and add key
     eval "$(ssh-agent -s)"
@@ -253,3 +199,4 @@ if ! grep -q 'alias azlogin=' "$HOME/.zshrc"; then
 fi
 
 print_msg "Setup complete! All changes applied."
+
