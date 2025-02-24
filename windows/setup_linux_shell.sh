@@ -65,19 +65,44 @@ setup_ssh() {
     mkdir -p "$linux_ssh_dir"
     chmod 700 "$linux_ssh_dir"
 
-    if [ -f "$win_ssh_dir/id_ed25519" ]; then
-        sudo cp "$win_ssh_dir/id_ed25519" "$linux_ssh_dir/id_ed25519"
-        sudo cp "$win_ssh_dir/id_ed25519.pub" "$linux_ssh_dir/id_ed25519.pub"
+    local win_ed25519_private="$win_ssh_dir/id_ed25519"
+    local win_ed25519_public="$win_ssh_dir/id_ed25519.pub"
+    local linux_ed25519_private="$linux_ssh_dir/id_ed25519"
+    local linux_ed25519_public="$linux_ssh_dir/id_ed25519.pub"
+
+    if [ -f $win_ed25519_private ]; then
+        sudo cp $win_ed25519_private $linux_ed25519_private
+        sudo cp $win_ed25519_public $linux_ed25519_public
         
         sudo chown -R $USER:$USER $linux_ssh_dir
-        sudo chmod 600 "$linux_ssh_dir/id_ed25519"
-        sudo chmod 644 "$linux_ssh_dir/id_ed25519.pub"
+        sudo chmod 600 $linux_ed25519_private
+        sudo chmod 644 $linux_ed25519_public
 
         eval `ssh-agent -s`
-        ssh-add $linux_ssh_dir/id_ed25519
-        echo "SSH keys linked and added to agent."
+        ssh-add $linux_ed25519_private
+        echo "ed25519 SSH keys linked and added to agent."
     else
-        echo "Windows SSH keys not found."
+        echo "Windows ed25519 SSH keys not found."
+    fi
+
+    local win_rsa_private="$win_ssh_dir/id_rsa"
+    local win_rsa_public="$win_ssh_dir/id_rsa.pub"
+    local linux_rsa_private="$linux_ssh_dir/id_rsa"
+    local linux_rsa_public="$linux_ssh_dir/id_rsa.pub"
+
+    if [ -f $win_rsa_private ]; then
+        sudo cp $win_rsa_private $linux_rsa_private
+        sudo cp $win_rsa_public $linux_rsa_public
+        
+        sudo chown -R $USER:$USER $linux_ssh_dir
+        sudo chmod 600 $linux_rsa_private
+        sudo chmod 644 $linux_rsa_public
+
+        eval `ssh-agent -s`
+        ssh-add $linux_rsa_private
+        echo "rsa SSH keys linked and added to agent."
+    else
+        echo "Windows rsa SSH keys not found."
     fi
 }
 
