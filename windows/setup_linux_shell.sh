@@ -166,7 +166,8 @@ check_docker() {
 configure_git() {
     local name="Max"
     git config --global user.name "$name"
-    echo "Git configured with name: $name"
+    git config --global core.editor "vim"
+    echo "Git configured with name: $name and setup vim as editor"
 }
 
 # Create essential aliases
