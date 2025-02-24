@@ -180,15 +180,27 @@ install_dotnet() {
 install_nvm_node() {
     if [ ! -d "$HOME/.nvm" ]; then
         print_msg "Installing NVM and Node.js..."
-        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash        
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+
+        nvm install node && nvm use node
+        echo "NVM and Node.js set up."
+    else
+        echo "nvm/node already installed."
     fi
-    nvm install latest && nvm use latest
-    echo "NVM and Node.js set up."
+}
+
+install_jq() {
+    if ! command -v jq &> /dev/null; then
+        echo "Installing jq..."
+        sudo apt-get update && sudo apt-get install jq -y
+    else
+        echo "jq already installed."
+    fi
 }
 
 # Docker check
 check_docker() {
-    if timeout 5 docker version &> /dev/null; then
+    if timeout 5 docker --version &> /dev/null; then
         echo "Docker is accessible from WSL."
     else
         echo "Docker not accessible. Ensure Docker Desktop with WSL integration is enabled."
@@ -224,6 +236,7 @@ main() {
     install_kubectl
     install_dotnet
     install_nvm_node
+    install_jq
     check_docker
     configure_git
     create_aliases
