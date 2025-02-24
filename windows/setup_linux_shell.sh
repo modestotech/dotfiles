@@ -106,6 +106,39 @@ setup_ssh() {
     fi
 }
 
+install_powershell() {
+    if [ ! -f "/usr/bin/pwsh" ] && [ ! -f "/bin/pwsh" ]; then
+        print_msg "Installing Powershell..."
+
+        # Update the list of packages
+        sudo apt-get update
+
+        # Install pre-requisite packages.
+        sudo apt-get install -y wget apt-transport-https software-properties-common
+
+        # Get the version of Ubuntu
+        source /etc/os-release
+
+        # Download the Microsoft repository keys
+        wget -q https://packages.microsoft.com/config/ubuntu/$VERSION_ID/packages-microsoft-prod.deb
+
+        # Register the Microsoft repository keys
+        sudo dpkg -i packages-microsoft-prod.deb
+
+        # Delete the Microsoft repository keys file
+        rm packages-microsoft-prod.deb
+
+        # Update the list of packages after we added packages.microsoft.com
+        sudo apt-get update
+
+        ###################################
+        # Install PowerShell
+        sudo apt-get install -y powershell
+    else
+        echo "Powershell already installed."
+    fi
+}
+
 # Install Azure CLI
 install_azure_cli() {
     if [ ! -f "/usr/bin/az" ] && [ ! -f "/usr/local/bin/az" ]; then
@@ -186,6 +219,7 @@ main() {
     setup_file_permissions
     install_zsh
     setup_ssh
+    install_powershell
     install_azure_cli
     install_kubectl
     install_dotnet
