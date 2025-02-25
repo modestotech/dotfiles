@@ -70,7 +70,9 @@ setup_ssh() {
     local linux_ed25519_private="$linux_ssh_dir/id_ed25519"
     local linux_ed25519_public="$linux_ssh_dir/id_ed25519.pub"
 
-    if [ -f $win_ed25519_private ]; then
+    if [[ -f $win_ed25519_private && -f $linux_ed25519_private ]]; then
+        echo "ed25519 SSH keys already set up."
+    elif [[ -f $win_ed25519_private && ! -f $linux_ed25519_private ]]; then
         sudo cp $win_ed25519_private $linux_ed25519_private
         sudo cp $win_ed25519_public $linux_ed25519_public
         
@@ -90,7 +92,9 @@ setup_ssh() {
     local linux_rsa_private="$linux_ssh_dir/id_rsa"
     local linux_rsa_public="$linux_ssh_dir/id_rsa.pub"
 
-    if [ -f $win_rsa_private ]; then
+    if [[ -f $win_rsa_private && -f $linux_rsa_private ]]; then
+        echo "rsa SSH keys already set up."
+    elif [[ -f $win_rsa_private && ! -f $linux_rsa_private ]]; then
         sudo cp $win_rsa_private $linux_rsa_private
         sudo cp $win_rsa_public $linux_rsa_public
         
