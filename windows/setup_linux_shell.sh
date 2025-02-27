@@ -228,6 +228,30 @@ create_aliases() {
     echo "Aliases added."
 }
 
+create_git_aliases() {
+    # Add aliases
+    git config --global alias.aa "add ."
+    git config --global alias.ca "commit --amend"
+    git config --global alias.can "commit --amend --no-edit"
+    git config --global alias.co "checkout"
+    git config --global alias.cod "git checkout dev"
+    git config --global alias.com "git checkout main"
+    git config --global alias.bad "branch -a --merged"
+    git config --global alias.bd "branch -d"
+    git config --global alias.bD "branch -D"
+    git config --global alias.fodd "fetch origin develop:develop"
+    git config --global alias.p "pull"
+    git config --global alias.pf "push --force-with-lease"
+    git config --global alias.rpo "remote prune origin"
+    git config --global alias.rea "rebase --continue"
+    git config --global alias.rec "rebase --continue"
+    git config --global alias.red "rebase dev"
+    git config --global alias.rid "rebase -i dev"
+    git config --global alias.s "status"
+    
+    echo "Git aliases added."
+}
+
 # Main execution flow
 main() {
     print_msg "Starting WSL Development Environment Setup..."
@@ -244,6 +268,7 @@ main() {
     check_docker
     configure_git
     create_aliases
+    create_git_aliases
     print_msg "Setup complete! All changes applied."
 }
 
