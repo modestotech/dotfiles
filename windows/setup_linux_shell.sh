@@ -216,6 +216,9 @@ configure_git() {
     local name="Max"
     git config --global user.name "$name"
     git config --global core.editor "vim"
+    # For branch commands be cat per default, not less
+    git config --global pager.branch false
+
     echo "Git configured with name: $name and setup vim as editor"
 }
 
