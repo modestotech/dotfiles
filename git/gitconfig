@@ -24,11 +24,18 @@
 	changed = green
 	untracked = red
 
+[merge]
+	conflictStyle = diff3
+
+[push]
+	default = simple
+
 [pull]
 	ff = only
 
 [rebase]
-    updateRefs = true
+	updateRefs = true
+	autosquash = true
 
 [core]
 	autocrlf = input
