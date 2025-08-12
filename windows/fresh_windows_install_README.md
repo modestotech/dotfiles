@@ -21,22 +21,16 @@ Install VS externally as well, worked through chocolatey but easier to stick wit
 
 See xml files in [./choco](./choco) directory. Invoke `choco install packages.config` to install packages
 
-### nvm
-- `nvm i lts`
-- `nvm use lts`
-
-## Setup tools
-
-Add `set bell-style none` in `~/.inputrc` if the terminal flickers.
-https://github.com/microsoft/terminal/issues/7200#issuecomment-672786518
-
 #### Linux terminal
 
 Activate WSL and once updated, install these, check recommended way:
 1. Install zsh
 2. Install dotnet-sdk
-3. Install nvm
+3. Install nvm and then `nvm install lts`
 4. Install docker engine
+   - For saving memory, disable docker services with `sudo systemctl disable docker docker.socket`
+   - Now to start and stop, use `sudo systemctl start docker docker.socket` and `sudo systemctl stop docker docker.socket`
+   - To check status, run `sudo systemctl status docker` or `docker info`
 
 Add gitconfig file from this repo.
 
