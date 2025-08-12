@@ -8,22 +8,6 @@
 [color]
 	ui = true
 
-[color "branch"]
-	current = yellow reverse
-	local = yellow
-	remote = green
-
-[color "diff"]
-	meta = yellow bold
-	frag = magenta bold
-	old = red bold
-	new = green bold
-
-[color "status"]
-	added = yellow
-	changed = green
-	untracked = red
-
 [merge]
 	conflictStyle = diff3
 
@@ -50,16 +34,36 @@
 	ca = commit --amend
 	can = commit --amend --no-edit
 	co = checkout
-	cod = checkout develop
-	bad = branch -a --merged
-	d = branch -d
-	D = branch -D
-	fodd = fetch origin develop:develop
-	p = pull
-	pfwl = push --force-with-lease
+
+    # Checkout 'dev' if it exists, otherwise 'develop'
+    cod = "!f() { \
+        # Find 'dev' or 'develop' branch (prefers dev if both exist) \
+        base_branch=$(git branch --list dev develop | grep -E 'dev$|develop$' | head -n 1); \
+        # If neither branch exists locally, abort with error \
+        if [ -z \"$base_branch\" ]; then \
+            echo 'No dev or develop branch found!' >&2; exit 1; \
+        fi; \
+        git checkout \"$base_branch\"; \
+    }; f"
+
+    # List all local and remote branches fully merged into the current branch
+    # Useful for spotting branches safe to delete after their changes are merged
+    bad = branch -a --merged	d = branch -d
+
+    # Create a fixup commit for the last commit (HEAD) including all tracked changes
+    # Use with 'git rebase -i --autosquash' (or autosquash=true) to fold it into the target commit
+    caf = commit -a --fixup
+
+    # Fetch origin 'dev' or 'develop' branch (prefers dev if both exist)
+    fodd = "!sh -c 'base_branch=$(git branch --list dev develop --format=\"%(refname:short)\" | grep -E \"^dev$|^develop$\" | head -n 1); if [ -z \"$base_branch\" ]; then echo \"No dev or develop branch found!\" >&2; exit 1; fi; git fetch origin \"$base_branch\":\"$base_branch\"'"
+
+	pf = push --force-with-lease
 	rpo = remote prune origin
-	reb = "!sh -c 'git fetch --prune > /dev/null 2>&1 && git branch -vv | findstr \": gone]\" | awk \"{print \\$1}\"'"
 	rec = rebase --continue
-	red = rebase develop
-	rid = rebase -i develop
 	s = status
+
+    # Rebase onto dev if it exists, otherwise onto develop (non-interactive)
+    red = "!sh -c 'base_branch=$(git branch --list dev develop --format=\"%(refname:short)\" | grep -E \"^dev$|^develop$\" | head -n 1); if [ -z \"$base_branch\" ]; then echo \"No dev or develop branch found!\" >&2; exit 1; fi; git rebase \"$base_branch\"'"
+
+    # Rebase onto dev if it exists, otherwise onto develop (interactive)
+    rid = "!sh -c 'base_branch=$(git branch --list dev develop --format=\"%(refname:short)\" | grep -E \"^dev$|^develop$\" | head -n 1); if [ -z \"$base_branch\" ]; then echo \"No dev or develop branch found!\" >&2; exit 1; fi; git rebase -i \"$base_branch\"'"
