@@ -1,6 +1,6 @@
 [user]
-	name = modestotech
-	email = modestotechnology@gmail.com
+	name = myName
+	email = myEmail
 
 [include]
 	path = ~/.gitconfig.local
