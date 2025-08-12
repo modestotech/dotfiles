@@ -36,15 +36,7 @@
 	co = checkout
 
     # Checkout 'dev' if it exists, otherwise 'develop'
-    cod = "!f() { \
-        # Find 'dev' or 'develop' branch (prefers dev if both exist) \
-        base_branch=$(git branch --list dev develop | grep -E 'dev$|develop$' | head -n 1); \
-        # If neither branch exists locally, abort with error \
-        if [ -z \"$base_branch\" ]; then \
-            echo 'No dev or develop branch found!' >&2; exit 1; \
-        fi; \
-        git checkout \"$base_branch\"; \
-    }; f"
+    cod = "!sh -c 'base_branch=$(git branch --list dev develop --format=\"%(refname:short)\" | grep -E \"^dev$|^develop$\" | head -n 1); if [ -z \"$base_branch\" ]; then echo \"No dev or develop branch found!\" >&2; exit 1; fi; git checkout \"$base_branch\"'"
 
     # List all local and remote branches fully merged into the current branch
     # Useful for spotting branches safe to delete after their changes are merged
